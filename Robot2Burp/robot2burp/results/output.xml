@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20171128 17:13:28.829" generator="Robot 3.0.2 (Python 2.7.6 on linux2)">
+<suite source="/home/pavan/Desktop/Automation/Robot2Burp/robot2burp/robot2burp.robot" id="s1" name="Robot2Burp">
+<test id="s1-t1" name="Burp Automation:">
+<kw name="Start Burp" library="Burp_api">
+<arguments>
+<arg>${BURP_API_JAR_FILE}</arg>
+<arg>${BURP_API_PROTOCOL}</arg>
+<arg>${BURP_API_HOST}</arg>
+<arg>${BURP_API_PORT}</arg>
+<arg>${BURP_HEADLESS_MODE}</arg>
+<arg>${JAVA_HOME}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.134" level="INFO">Port is open
+Burp API Service Started</msg>
+<status status="PASS" endtime="20171128 17:13:59.135" starttime="20171128 17:13:28.986"></status>
+</kw>
+<kw name="Include Scope" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.175" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:13:59.485" level="INFO">http://127.0.0.1:7777 is added to the scope</msg>
+<status status="PASS" endtime="20171128 17:13:59.485" starttime="20171128 17:13:59.136"></status>
+</kw>
+<kw name="Check Scope" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.488" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:13:59.560" level="INFO">http://127.0.0.1:7777 is with in the scope</msg>
+<status status="PASS" endtime="20171128 17:13:59.560" starttime="20171128 17:13:59.486"></status>
+</kw>
+<kw name="Spider" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.563" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:13:59.590" level="INFO">http://127.0.0.1:7777 is added to spider</msg>
+<status status="PASS" endtime="20171128 17:13:59.590" starttime="20171128 17:13:59.561"></status>
+</kw>
+<kw name="Active Scan" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.593" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:13:59.761" level="INFO">http://127.0.0.1:7777 is added to active scan</msg>
+<status status="PASS" endtime="20171128 17:13:59.762" starttime="20171128 17:13:59.591"></status>
+</kw>
+<kw name="Scan Status" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:13:59.766" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:04.868" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:10.435" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:15.458" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:15.468" level="INFO">Scan is in progress:0
+Scan is in progress:51
+Scan is in progress:76
+Active Scan completed for the scope url:http://127.0.0.1:7777 status:100</msg>
+<status status="PASS" endtime="20171128 17:14:15.468" starttime="20171128 17:13:59.764"></status>
+</kw>
+<kw name="Issue Result" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+</arguments>
+<msg timestamp="20171128 17:14:15.471" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:15.567" level="INFO">Total no of issue identified:2
+
+Issue Name:Frameable response (potential Clickjacking)
+Issue Url:http://127.0.0.1:7777/
+Issue Type:5245344
+Issue severity:Information
+Confidence:Firm
+
+Issue Name:Unencrypted communications
+Issue Url:http://127.0.0.1:7777/
+Issue Type:16777728
+Issue severity:Low
+Confidence:Certain</msg>
+<status status="PASS" endtime="20171128 17:14:15.567" starttime="20171128 17:14:15.469"></status>
+</kw>
+<kw name="Generate Report" library="Burp_api">
+<arguments>
+<arg>${SCOPE_URL}</arg>
+<arg>${REPORT_NAME}</arg>
+<arg>${FORMAT}</arg>
+</arguments>
+<msg timestamp="20171128 17:14:15.569" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:15.741" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<status status="PASS" endtime="20171128 17:14:15.813" starttime="20171128 17:14:15.568"></status>
+</kw>
+<kw name="Stop Burp" library="Burp_api">
+<msg timestamp="20171128 17:14:15.816" level="INFO">Starting new HTTP connection (1): 127.0.0.1</msg>
+<msg timestamp="20171128 17:14:15.822" level="INFO">Burp API Service is shutdown</msg>
+<status status="PASS" endtime="20171128 17:14:15.823" starttime="20171128 17:14:15.814"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${HTML_SCAN_REPORT}</arg>
+<arg>html=True</arg>
+</arguments>
+<msg timestamp="20171128 17:14:15.823" html="yes" level="INFO">&lt;a href=demo_automation.html&gt;HTML Format Report&lt;/a&gt;</msg>
+<status status="PASS" endtime="20171128 17:14:15.823" starttime="20171128 17:14:15.823"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${XML_SCAN_REPORT}</arg>
+<arg>html=True</arg>
+</arguments>
+<msg timestamp="20171128 17:14:15.824" html="yes" level="INFO">&lt;a href=demo_automation.xml&gt;XML Format Report&lt;/a&gt;</msg>
+<status status="PASS" endtime="20171128 17:14:15.824" starttime="20171128 17:14:15.824"></status>
+</kw>
+<doc>Burp Automation Via Burp Rest API</doc>
+<tags>
+<tag>Discovery</tag>
+<tag>Exploitation</tag>
+</tags>
+<status status="PASS" endtime="20171128 17:14:15.825" critical="yes" starttime="20171128 17:13:28.985"></status>
+</test>
+<status status="PASS" endtime="20171128 17:14:15.825" starttime="20171128 17:13:28.830"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">Discovery</stat>
+<stat fail="0" pass="1">Exploitation</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Robot2Burp" pass="1">Robot2Burp</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
