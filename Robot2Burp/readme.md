@@ -28,6 +28,11 @@
    ${XML_SCAN_REPORT}      <a href=${REPORT_NAME}.xml>XML Format Report</a>
 ```
 
+```
+   ${AUTH_TOKEN}       <*Auth Token>
+   ${WEBHOOK_URL}      <*Orchestron Webhook Url>
+   ${ENGAGEMENT_ID}    <optional leave blank if not neccessary>
+```
 
 ### How to Run Robot2Burp?
     

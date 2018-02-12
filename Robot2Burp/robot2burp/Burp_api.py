@@ -4,6 +4,7 @@ import subprocess
 import time
 import socket
 import yaml
+from time import gmtime, strftime, localtime
 
 
 
@@ -110,7 +111,7 @@ class Burp_api(object):
             if res.status_code ==  200:
                 if json_res['scanPercentage'] < 100:
                     time.sleep(5)
-                    print 'Scan is in progress:'+ str(json_res['scanPercentage'])
+                    # print 'Scan is in progress:'+ str(json_res['scanPercentage'])
                 else:
                     print  'Active Scan completed for the scope url:%s status:%s' %(url,str(json_res['scanPercentage']))
                     break
@@ -199,5 +200,20 @@ class Burp_api(object):
             json_res = yaml.load(res.text)
             print('state_code:' + str(json_res['status']) + '\n' + 'Message:' + json_res['message'])
 
+    def orchy_webhook(self,report_name,auth_token,webhook_url,engagement_id=''):
+        req_headers={'Authorization':'Token '+auth_token,'X-Engagement-ID':engagement_id}
+        files={'file':open("./results/"+report_name+"."+"xml",'r')}
+        req = requests.post(webhook_url,headers=req_headers,files=files)
+        if req.status_code == 200:
+            print "Result pushed successfully"
+            with open('./results/orchy_log.json','a') as orchy_log:
+                log_data="["+strftime("%Y-%m-%d %H:%M:%S", localtime())+"]: "+req.content
+                orchy_log.write(log_data +'\n')
+                orchy_log.close()
+        else:
+            with open('./results/orchy_log.json','a') as orchy_log:
+                log_data="["+strftime("%Y-%m-%d %H:%M:%S", localtime())+"]: "+req.content
+                orchy_log.write(log_data+'\n')
+                orchy_log.close()
 
 

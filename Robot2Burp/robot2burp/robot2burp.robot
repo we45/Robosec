@@ -20,6 +20,9 @@ ${REPORT_NAME}          demo_automation
 ${HTML_SCAN_REPORT}     <a href=${REPORT_NAME}.html>HTML Format Report</a>
 ${XML_SCAN_REPORT}      <a href=${REPORT_NAME}.xml>XML Format Report</a>
 
+${AUTH_TOKEN}       <Auth Token>
+${WEBHOOK_URL}      <Orchestron Webhook Url>
+${ENGAGEMENT_ID}    <optional leave blank if not neccessary>
 
 *** Test Cases ***
 Burp Automation:
@@ -34,5 +37,6 @@ Burp Automation:
     issue result  ${SCOPE_URL}
     generate report  ${SCOPE_URL}   ${REPORT_NAME}    ${FORMAT}
     stop burp
+    orchy webhook   ${REPORT_NAME}  ${AUTH_TOKEN}   ${WEBHOOK_URL}  ${ENGAGEMENT_ID}
     log  ${HTML_SCAN_REPORT}   html=True
     log  ${XML_SCAN_REPORT}     html=True
