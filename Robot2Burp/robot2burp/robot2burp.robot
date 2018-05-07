@@ -7,13 +7,13 @@ ${BURP_API_JAR_FILE}    ./burp-rest-api-1.0.0.jar
 ${BURP_API_HOST}        127.0.0.1
 ${BURP_API_PROTOCOL}    http
 ${BURP_API_PORT}        8090
-${JAVA_HOME}            /home/pavan/Downloads/umar/jdk1.8.0_151
+${JAVA_HOME}            
 ${BURP_HEADLESS_MODE}   true
 
 
-${SCOPE_URL}            http://127.0.0.1:7777
+${SCOPE_URL}            http://testphp.vulnweb.com
 ${BURP_CONFIG}          ./democonfig.json
-${REPORT_NAME}          demo_automation
+${REPORT_NAME}          burp_automation_demo
 @{FORMAT}=              HTML  XML
 
 
@@ -37,6 +37,5 @@ Burp Automation:
     issue result  ${SCOPE_URL}
     generate report  ${SCOPE_URL}   ${REPORT_NAME}    ${FORMAT}
     stop burp
-    orchy webhook   ${REPORT_NAME}  ${AUTH_TOKEN}   ${WEBHOOK_URL}  ${ENGAGEMENT_ID}
     log  ${HTML_SCAN_REPORT}   html=True
     log  ${XML_SCAN_REPORT}     html=True
