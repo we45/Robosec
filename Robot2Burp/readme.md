@@ -41,9 +41,9 @@
            ``Python setup.py install`` 
     3. Fill the configuration in the Robot2Burp.Robot script.
     3. Run the Robot2Burp.Robot using pybot with directory parameter to generate the report for both Robot Framework Test Suite and Nessus Scan.
-    ```sudo pybot -d results/ <script name>```
+    ```sudo pybot -d reports/ <script name>```
 
-   **Note:Mention -d results/ while  running Robot2Burp Script**
+   **Note:Mention -d reports/ while  running Robot2Burp Script**
 
 
 
