@@ -177,7 +177,7 @@ class Burp_api(object):
                     output = BeautifulSoup(output, 'lxml')
                 elif report_format.lower() == "xml":
                     output = BeautifulSoup(output, 'xml')
-                report= open("./results/"+report_name+"."+report_format.lower(),'w')
+                report= open("./reports/"+report_name+"."+report_format.lower(),'w')
                 report.write(str(output))
                 report.close()
 
